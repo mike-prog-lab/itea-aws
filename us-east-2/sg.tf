@@ -4,20 +4,20 @@ module "sg_public" {
   name   = "public-allow-sg"
   vpc_id = module.vpc.vpc_id
 
-  ingress_cidr_blocks = [
+  ingress_with_cidr_blocks = [
     {
       from_port   = 22
       to_port     = 22
       protocol    = "tcp"
-      cidr_blocks = ["0.0.0.0/0"]
+      cidr_blocks = "0.0.0.0/0"
     }
   ]
-  egress_cidr_blocks  = [
+  egress_with_cidr_blocks  = [
     {
       from_port   = 0
       to_port     = 0
       protocol    = "tcp"
-      cidr_blocks = ["0.0.0.0/0"]
+      cidr_blocks = "0.0.0.0/0"
     }
   ]
 }
@@ -30,18 +30,19 @@ module "sg_private" {
 
   ingress_with_source_security_group_id = [
     {
-      from_port         = 22
-      to_port           = 22
-      protocol          = "tcp"
-      security_group_id = module.sg_public.security_group_id
+      from_port                = 22
+      to_port                  = 22
+      protocol                 = "tcp"
+      source_security_group_id = module.sg_public.security_group_id
     }
   ]
-  egress_cidr_blocks  = [
+
+  egress_with_cidr_blocks = [
     {
       from_port   = 0
       to_port     = 0
       protocol    = "tcp"
-      cidr_blocks = ["0.0.0.0/0"]
+      cidr_blocks = "0.0.0.0/0"
     }
   ]
 }

@@ -9,16 +9,4 @@ terraform {
 
 provider "aws" {
   region = "us-east-2"
-
-  default_tags {
-    tags = {
-      Student = "student7"
-      Task = "AdditionalTask"
-      Terraform = "true"
-    }
-  }
-}
-
-data "aws_vpc" "main" {
-
 }

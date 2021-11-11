@@ -1,7 +1,7 @@
 module "vpc" {
   source = "terraform-aws-modules/vpc/aws"
 
-  name = "my-vpc"
+  name = "vpc-student7"
   cidr = "10.0.1.0/24"
 
   azs             = ["us-east-2a"]

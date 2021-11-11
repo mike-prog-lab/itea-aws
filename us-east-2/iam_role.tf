@@ -1,11 +1,12 @@
 module "iam_s3_role" {
-  source  = "terraform-aws-modules/iam/aws//modules/iam-assumable-role"
+  source = "terraform-aws-modules/iam/aws//modules/iam-assumable-role"
 
   trusted_role_arns = [
     var.student7.arn,
   ]
 
-  create_role = true
+  create_role             = true
+  create_instance_profile = true
 
   role_name = "S3Student7ManagerRole"
 

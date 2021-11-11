@@ -1,6 +1,7 @@
 variable "student7" {
   type = object({
     arn = string
+    pk  = string
   })
   description = "Object presentation of student7 entity."
 }
